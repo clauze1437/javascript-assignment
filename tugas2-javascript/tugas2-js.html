@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas Membuat Data Pegawai</title>
+</head>
+<body>
+    <style>
+        body {
+            background-color: blanchedalmond;
+        }
+        table {
+            position: absolute;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <h2 align="center">Data Pegawai</h2>
+    <table border="1" cellpadding="0" align="center" width="100%">
+        <thead bgcolor="salmon">
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Religion</th>
+                <th>Basic Salary</th>
+                <th>Positional Allowance</th>
+                <th>Health Benefits</th>
+                <th>Gross Salary</th>
+                <th>Professional Zakat</th>
+                <th>Take Home Pay</th>
+            </tr>
+        </thead>
+        <tbody>
+            <script language="javascript">
+                const formatRp = (e) => {
+                    return new Intl.NumberFormat("id-ID").format(e);
+                        };
+                var jabatan = 'Manager';
+                var gapok= 0;
+
+                for (let numbers = 1; numbers <= 100; numbers++) {
+                    if (numbers > 75 && numbers <= 100) jabatan = 'Staff';
+                    else if (numbers > 50 && numbers <= 75) jabatan = 'Super Visor';
+                            else if (numbers > 25 && numbers <= 50) jabatan = 'Asisten Manager';
+                            else jabatan = 'Manager';
+                    switch (jabatan) {
+                        case 'Staff': gapok = 4000000; 
+                        break;
+                        case 'Super Visor': gapok = 7000000; 
+                        break;
+                        case 'Asisten Manager': gapok = 10000000; 
+                        break;
+                        case 'Manager': gapok = 15000000; 
+                        break;
+                        default: gapok = 15000000; 
+                        break;
+                    }
+
+                    var tunjab = gapok * 0.2;
+                    var tunkes = gapok * 0.1;
+                    var gator = gapok + tunjab + tunkes;
+
+                    var agama = 'Muslim';
+                    numbers % 2 == 1 ? agama : agama = "Non Muslim";
+                    const warna = agama === "Muslim" ? "#fde047" : "#67e8f9";
+                    var zaprof = 0;
+                            if (agama === "Muslim" && gator >= 7000000) zaprof = gator * 0.025;
+                            else zaprof = 0;
+
+                            const takeHomePay = gator - zaprof;
+
+                            document.write(`
+                                <tr bgcolor=${warna}>
+                                    <td>${numbers}</td>
+                                    <td>Pegawai${numbers}</td>
+                                    <td>${jabatan}</td>
+                                    <td>${agama}</td>
+                                    <td>Rp. ${gapok.toLocaleString()}</td>
+                                    <td>Rp. ${tunjab.toLocaleString()}</td>
+                                    <td>Rp. ${tunkes.toLocaleString()}</td>
+                                    <td>Rp. ${gator.toLocaleString()}</td>
+                                    <td>Rp. ${zaprof.toLocaleString()}</td>
+                                    <td>Rp. ${takeHomePay.toLocaleString()}</td>
+                                </tr>
+                            `)
+                            }
+            </script>
+        </tbody>
+    </table>
+    
+</body>
+</html>
