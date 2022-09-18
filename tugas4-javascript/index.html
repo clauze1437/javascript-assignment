@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Tugas4-javascript membuat konverter barang ke mata uang lain</title>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: aqua;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="" class="d-flex align-items-center mb-3 mb-md-0 text-dark text-decoration-none text-center">
+          <span class="fs-4">Konversi Kurs Pembelian Barang</span>
+        </a>
+      </header>
+
+    <main class="py-5">
+      <section>
+        <div class="container">
+          <div class="row g-5">
+            <div class="col-md-7 col-lg-8">
+              <h4 class="mb-3">Form Pembelian</h4>
+              <form id="formPembelian">
+                <div class="mb-3">
+                  <label for="inputNama" class="form-label">Nama Pembeli</label>
+                  <input type="text" class="form-control" id="inputNama" name="pembeli">
+                </div>
+                <div class="mb-3">
+                  <label for="inputBarang" class="form-label">Nama Barang</label>
+                  <input type="text" class="form-control" id="inputBarang" name="barang">
+                </div>
+                <div class="mb-3">
+                  <label for="inputHarga" class="form-label">Harga Barang</label>
+                  <input type="text" class="form-control" id="inputHarga" name="harga">
+                </div>
+                <div class="mb-3">
+                  <label for="inputJumlah" class="form-label">Jumlah Barang</label>
+                  <input type="text" class="form-control" id="inputJumlah" name="jumlah">
+                </div>
+                <div class="mb-3">
+                  <label for="inputValuta" aria-label="Valuta Asing">Valuta Asing</label>
+                  <select class="form-select" onchange="konversiKurs()" name="valas" aria-label="Default select example">
+                    <option selected>-- Pilih Valuta Asing --</option>
+                    <option value="14917">USD</option>
+                    <option value="10590">SGD</option>
+                    <option value="14918">EUR</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-5 col-lg-4">
+              <h4 class="mb-3 text-primary">Data Pembelian</h4>
+              <ul class="list-group" id="isi">
+                <li class="list-group-item lh-sm">
+                  <div>
+                    <h6 class="my-0">Nama Pembeli</h6>
+                  </div>
+                </li>
+                <li class="list-group-item lh-sm">
+                  <div>
+                    <h6 class="my-0">Nama Barang</h6>
+                  </div>
+                </li>
+                <li class="list-group-item lh-sm">
+                  <div>
+                    <h6 class="my-0">Harga Barang</h6>
+                  </div>
+                </li>
+                <li class="list-group-item lh-sm">
+                  <div>
+                    <h6 class="my-0">Jumlah Barang</h6>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                  <span><h6>Total Bayar</h6></span>
+                  <strong>0</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+		<div class="col-md-12">
+			<div class="alert alert-dark" role="alert">
+				&copy; INVESTING <3
+			  </div>
+		</div>
+	</div>
+</div>
+    <script>
+      function konversiKurs() {
+        var formPembelian = document.getElementById('formPembelian');
+        var namaPembeli = formPembelian.pembeli.value;
+        var namaBarang = formPembelian.barang.value;
+        var hargaBarang = formPembelian.harga.value;
+        var jumlahBarang = formPembelian.jumlah.value;
+        var totalBayarIDR = hargaBarang * jumlahBarang;
+        var valutaAsing = formPembelian.valas.value;
+        var totalBayarEx = totalBayarIDR / valutaAsing;
+        var totalBayar;
+
+        if (valutaAsing == 14917) {
+            totalBayar = `$ ${totalBayarEx.toFixed(2)}`;
+        } else if (valutaAsing == 10590) {
+            totalBayar = `S$ ${totalBayarEx.toFixed(2)}`;
+        } else if (valutaAsing == 14918) {
+            totalBayar = `€ ${totalBayarEx.toFixed(2)}`;
+        } else {
+            totalBayar = 0;
+        }
+
+        document.getElementById('isi').innerHTML = `
+        <li class="list-group-item lh-sm">
+          <div>
+            <h6 class="my-0">Nama Pembeli</h6>
+            <small class="text-muted">${namaPembeli}</small>
+          </div>
+        </li>
+        <li class="list-group-item lh-sm">
+          <div>
+            <h6 class="my-0">Nama Barang</h6>
+            <small class="text-muted">${namaBarang}</small>
+          </div>
+        </li>
+        <li class="list-group-item lh-sm">
+          <div>
+            <h6 class="my-0">Harga Barang</h6>
+            <small class="text-muted">Rp. ${hargaBarang}</small>
+          </div>
+        </li>
+        <li class="list-group-item lh-sm">
+          <div>
+            <h6 class="my-0">Jumlah Barang</h6>
+            <small class="text-muted">${jumlahBarang}</small>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span><h6>Total Bayar</h6></span>
+          <strong>${totalBayar}</strong>
+        </li>
+        `;
+      }
+
+    </script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
