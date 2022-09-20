@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+}
+
+table,
+td {
+    text-align: center;
+    border: 1px double black;
+}   
+
+thead {
+    color: #af0cfa;
+    background-color: #3dccf0;
+}
