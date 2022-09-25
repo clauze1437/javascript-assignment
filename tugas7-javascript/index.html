@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 7 Membuat suara hewan</title>
+    <script src="js/index.js"></script>
+    <script>
+        $("document").ready(function () {
+                $("div.sapi").click(function () {
+                    $(this).css({
+                        background: "url('src/Cow.jpg')"
+                    });
+                    $("<audio></audio>").attr({ 
+	            	'src':'suara/suara_sapi.mp3', 
+		            'volume':0.4,
+	            	'autoplay':'autoplay'
+                	}).appendTo("body");
+                });
+                $("div.kambing").click(function () {
+                    $(this).css({
+                        background: "url('src/kambing.jpg')"
+                    });
+                    $("<audio></audio>").attr({ 
+	            	'src':'suara/suara_kambing.mp3', 
+		            'volume':0.4,
+	            	'autoplay':'autoplay'
+                	}).appendTo("body");
+                });
+                $("div.kucing").click(function () {
+                    $(this).css({
+                        background: "url('src/kucing.jpeg')"
+                    });
+                    $("<audio></audio>").attr({ 
+	            	'src':'suara/suara_kucing.mp3', 
+		            'volume':0.4,
+	            	'autoplay':'autoplay'
+                	}).appendTo("body");
+                });
+                $("div.burung").click(function () {
+                    $(this).css({
+                        background: "url(src/burung.jpg')"
+                    });
+                    $("<audio></audio>").attr({ 
+	            	'src':'suara/suara_burung.mp3', 
+		            'volume':0.4,
+	            	'autoplay':'autoplay'
+                	}).appendTo("body");
+                });
+                $("div.bebek").click(function () {
+                    $(this).css({
+                        background: "url('src/bebek.jpg')"
+                    });
+                    $("<audio></audio>").attr({ 
+	            	'src':'suara/suara_bebek.mp3', 
+		            'volume':0.4,
+	            	'autoplay':'autoplay'
+                	}).appendTo("body");
+                });
+            });
+    </script>
+    <style type="text/css">
+             #kotak {
+              background: linear-gradient(to right, #c2e59c, #64b3f4);
+                  width: 100px;
+                  height: 100px;
+                 cursor: pointer;
+                     }
+             #box {
+                 display:inline-block;
+                  width: 100px;
+                  justify-content: center;
+             }
+         </style>
+     </head>
+ 
+     <body>
+         <center><p><h2>Membuat suara hewan dan Gmabarnya</h2></p></center>
+         <div id="box"> GAMBAR & SUARA SAPI<div id="kotak" class="sapi"></div></div>
+         <div id="box"> GAMBAR & SUARA KAMBING<div id="kotak" class="kambing"></div></div>
+         <div id="box"> GAMBAR & SUARA KUCING<div id="kotak" class="kucing"></div></div>
+         <div id="box"> GAMBAR & SUARA BURUNG<div id="kotak" class="burung"></div></div>
+         <div id="box"> GAMBAR & SUARA BEBEK <div id="kotak" class="bebek"></div></div>
+         
+     </body>
+ </html>
+</head>
+<body>
+    
+</body>
+</html>
